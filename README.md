@@ -1,7 +1,7 @@
 # Cross-the-Street
-Reach the water, without colliding into any one of the enemies in this [Frogger](https://en.wikipedia.org/wiki/Frogger)-like game!
+This is a web-based [Frogger](https://en.wikipedia.org/wiki/Frogger)-like game. The objective is simple. 
 
-Move up, down, left, or right! Just avoid the crawling bugs on your way to the water!
+Reach the water, without colliding into any one of the enemies. Move up, down, left, or right!
 
 ## Instructions
 No dependencies required.
