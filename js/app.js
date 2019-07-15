@@ -1,7 +1,9 @@
-const enemyStartX = -90;
-const playerStartX = 202;
-const playerStartY = 373.5;
-const canvasRightLimit = 504;
+'use strict'
+
+const ENEMY_START_X = -90;
+const PLAYER_START_X = 202;
+const PLAYER_START_Y = 373.5;
+const CANVAS_RIGHT_LIMIT = 504;
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -14,7 +16,7 @@ var Enemy = function() {
 
   // Set enemy x start posittion
   // Enemy starts at random x position
-  this.x = Math.floor((Math.random() * canvasRightLimit) + enemyStartX);
+  this.x = Math.floor((Math.random() * CANVAS_RIGHT_LIMIT) + ENEMY_START_X);
 
   //Array of possible enemy positions
   this.yArray = [41.5, 124.5, 207.5];
@@ -35,9 +37,9 @@ Enemy.prototype.update = function(dt) {
   this.x = this.x + (this.speed * dt);
 
   // Refresh enemy when it reaches canvas right
-  if (this.x > canvasRightLimit) {
+  if (this.x > CANVAS_RIGHT_LIMIT) {
     // Reset enemy start position
-    this.x = enemyStartX;
+    this.x = ENEMY_START_X;
 
     // Set enemy position to random yArray value
     this.y = this.yArray[Math.floor(Math.random() * this.yArray.length)];
@@ -48,14 +50,19 @@ Enemy.prototype.update = function(dt) {
 
   // Check if enemy collides with player
   // Collision occurs when enemy and player are at the same x and y positions
+  /**
+   * For better code organization, this code should be in a separate  * checkCollisions method in your Enemy class. Writing small  
+   * modules of code with a focused and limited purpose makes your
+   * code more flexible and easier to maintain.
+   */
   if ((this.x > player.x - 75 && this.x < player.x + 75) && (this.y > player.y - 75 && this.y < player.y + 75)) {
     // Return player to initial position
-    player.x = playerStartX;
-    player.y = playerStartY;
+    player.x = PLAYER_START_X;
+    player.y = PLAYER_START_Y;
 
     // Enemies go to random positions
     allEnemies.forEach(function(enemy) {
-      enemy.x = Math.floor((Math.random() * canvasRightLimit) + enemyStartX);
+      enemy.x = Math.floor((Math.random() * CANVAS_RIGHT_LIMIT) + ENEMY_START_X);
       enemy.y = enemy.yArray[Math.floor(Math.random() * enemy.yArray.length)];
     });
   }
@@ -69,10 +76,20 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+/**
+ * If you want to explore OOP further you should look into Object 
+ * Inheritance.
+ * 
+ * To use Object Inheritance you’d want to think about the properties 
+ * that Enemy and Player have in common, e.g sprite, x, y and create 
+ * an object with those properties, e.g Character. Then when you 
+ * create Player and Enemy, you would extend Character with those 
+ * properties already in place.
+ */
 var Player = function() {
   // Set initial player position
-  this.x = playerStartX;
-  this.y = playerStartY;
+  this.x = PLAYER_START_X;
+  this.y = PLAYER_START_Y;
 
   // Set player image
   this.sprite = 'images/char-boy.png';
@@ -84,14 +101,14 @@ Player.prototype.handleInput = function(keyPress) {
     case 'up':
       this.y = this.y - 83;
       if (this.y < 0) {
-        this.x = playerStartX;
-        this.y = playerStartY;
+        this.x = PLAYER_START_X;
+        this.y = PLAYER_START_Y;
       }
 
       break;
 
     case 'down':
-      if (this.y < playerStartY) {
+      if (this.y < PLAYER_START_Y) {
         this.y = this.y + 83;
       }
 
@@ -114,7 +131,7 @@ Player.prototype.handleInput = function(keyPress) {
 };
 
 Player.prototype.update = function(dt) {
-
+  /**Purposefully empty**/
 };
 
 // Draw the player on the screen, required method for game
