@@ -12,7 +12,7 @@ You may do the following:
 Controls: `up`, `down`, `left`, or `right` on the keyboard.
 
 ## License 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MichaelJoshDangcil/Concentration-Game/blob/master/LICENSE) file for more details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MichaelJoshDangcil/Cross-the-Street/blob/master/LICENSE) file for more details.
 
 ## Built With
 + HTML
